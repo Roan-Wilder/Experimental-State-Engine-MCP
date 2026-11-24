@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-eco-lab.local/schemas/stt_event_v1.json",
+  "title": "STTEventV1",
+  "type": "object",
+  "required": [
+    "transcription_id",
+    "type",
+    "timestamp",
+    "stt_backend",
+    "stt_model",
+    "text",
+    "text_hash",
+    "audio_hash",
+    "disclaimer"
+  ],
+  "properties": {
+    "transcription_id": { "type": "string" },
+    "type": { "type": "string" },
+    "timestamp": { "type": "string" },
+    "experiment_id": { "type": ["string", "null"] },
+    "trial_id": { "type": ["string", "null"] },
+    "stage": { "type": ["string", "null"] },
+    "stt_backend": { "type": "string" },
+    "stt_model": { "type": "string" },
+    "stt_device": { "type": "string" },
+    "stt_compute_type": { "type": "string" },
+    "language": { "type": ["string", "null"] },
+    "language_probability": { "type": ["number", "null"] },
+    "text": { "type": "string" },
+    "text_hash": { "type": "string" },
+    "audio_hash": { "type": "string" },
+    "duration_seconds": { "type": "number" },
+    "processing_time_seconds": { "type": "number" },
+    "source": { "type": "string" },
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["start", "end", "text"],
+        "properties": {
+          "start": { "type": "number" },
+          "end": { "type": "number" },
+          "text": { "type": "string" }
+        }
+      }
+    },
+    "disclaimer": { "type": "string" }
+  },
+  "additionalProperties": false
+}

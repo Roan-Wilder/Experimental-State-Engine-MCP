@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-eco-lab.local/schemas/voice_benchmark_v1.json",
+  "title": "VoiceBenchmarkV1",
+  "type": "object",
+  "required": [
+    "timestamp",
+    "backend",
+    "text",
+    "seed",
+    "init_seconds",
+    "model_path",
+    "codec_path"
+  ],
+  "properties": {
+    "timestamp": { "type": "string" },
+    "backend": { "type": "string" },
+    "text": { "type": "string" },
+    "seed": { "type": "integer" },
+    "init_seconds": { "type": "number" },
+    "synthesis_seconds": { "type": ["number", "null"] },
+    "audio_duration_seconds": { "type": ["number", "null"] },
+    "real_time_factor": { "type": ["number", "null"] },
+    "peak_memory_bytes": { "type": ["integer", "null"] },
+    "model_path": { "type": "string" },
+    "codec_path": { "type": "string" },
+    "model_sha256": { "type": ["string", "null"] },
+    "codec_sha256": { "type": ["string", "null"] },
+    "generation_parameters": { "type": "object" },
+    "error": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

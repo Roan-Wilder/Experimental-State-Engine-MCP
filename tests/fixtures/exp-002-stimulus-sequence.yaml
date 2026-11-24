@@ -1,0 +1,12 @@
+experiment_id: exp-002
+title: Affective State Observation
+purpose: >
+  Investigate whether a deterministic external affective-state representation
+  can be generated, measured and compared with AI behavior under controlled stimuli.
+events:
+  - neutral_information
+  - novel_information
+  - positive_social_feedback
+  - contradictory_information
+  - threatening_information
+  - resolution

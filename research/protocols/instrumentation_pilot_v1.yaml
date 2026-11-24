@@ -1,0 +1,43 @@
+protocol_version: "1.1"
+experiment_name: instrumentation_pilot_v1
+extends: prediction_revision_v1
+research_question: >
+  Can five-channel instrumentation (behavioral, engine_state, model_io,
+  self_report, internal_activation) preserve scientific separation while
+  supporting before/after contradiction and revision comparisons?
+hypothesis: >
+  Contradiction trials will show measurable affective engine_state changes
+  while model_io and internal_activation remain unsupported/null in the LM Studio path.
+model_identifier: gemma4-v2-Q4_K_M
+include_simulated_self_report: true
+pilot_settings:
+  trials_per_condition: 4
+  master_seed: 42
+  total_trials: 12
+observation_stages:
+  - baseline
+  - post_prediction
+  - post_information
+  - post_contradiction
+  - post_revision
+  - self_report
+instrumentation:
+  schema_version: "2.0.0"
+  observation_mode: permissive
+  strict_uuid_comparisons: true
+  channels:
+    behavioral: present_when_supplied
+    engine_state: always
+    model_io: unsupported
+    self_report: optional
+    internal_activation: unsupported
+comparison_pairs:
+  - before_stage: post_prediction
+    after_stage: post_contradiction
+    label: before_vs_after_contradiction
+  - before_stage: post_contradiction
+    after_stage: post_revision
+    label: after_contradiction_vs_after_revision
+stopping_criteria:
+  min_trials: 10
+  max_trials: 20

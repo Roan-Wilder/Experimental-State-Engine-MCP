@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-eco-lab.local/schemas/image_provenance_v1.json",
+  "title": "AI Eco Lab Image Provenance Record v1",
+  "type": "object",
+  "required": [
+    "image_id",
+    "sha256",
+    "mime_type",
+    "width",
+    "height",
+    "byte_size",
+    "source",
+    "experiment_id",
+    "stage",
+    "timestamp"
+  ],
+  "properties": {
+    "image_id": { "type": "string", "format": "uuid" },
+    "sha256": { "type": "string" },
+    "mime_type": { "type": "string" },
+    "width": { "type": "integer", "minimum": 1 },
+    "height": { "type": "integer", "minimum": 1 },
+    "byte_size": { "type": "integer", "minimum": 0 },
+    "source": { "type": "string" },
+    "source_type": { "type": "string" },
+    "role": { "type": "string" },
+    "trial_id": { "type": ["string", "null"] },
+    "experiment_id": { "type": "string" },
+    "stage": { "type": "string" },
+    "request_id": { "type": ["string", "null"] },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "artifact_stored": { "type": "boolean" },
+    "artifact_ref": { "type": ["string", "null"] },
+    "duplicate_of_image_id": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-eco-lab.local/schemas/voice_persona_v1.json",
+  "title": "VoicePersonaV1",
+  "type": "object",
+  "required": [
+    "voice_id",
+    "name",
+    "description",
+    "source_model",
+    "model_hash",
+    "codec_hash",
+    "creation_instruction",
+    "reference_audio_hash",
+    "reference_artifact_id",
+    "reference_text_hash",
+    "creation_timestamp",
+    "version",
+    "status",
+    "persona_disclaimer"
+  ],
+  "properties": {
+    "voice_id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "source_model": { "type": "string" },
+    "model_hash": { "type": "string" },
+    "codec_hash": { "type": "string" },
+    "creation_seed": { "type": ["integer", "null"] },
+    "creation_instruction": { "type": "string" },
+    "reference_audio_hash": { "type": "string" },
+    "reference_artifact_id": { "type": "string" },
+    "reference_text_hash": { "type": "string" },
+    "creation_timestamp": { "type": "string" },
+    "version": { "type": "integer" },
+    "status": { "enum": ["active", "superseded", "deprecated"] },
+    "persona_disclaimer": { "type": "string" }
+  },
+  "additionalProperties": false
+}

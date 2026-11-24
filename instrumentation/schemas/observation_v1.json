@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-eco-lab.local/schemas/observation_v1.json",
+  "title": "AI Eco Lab Multi-Channel Observation Record v1",
+  "type": "object",
+  "required": [
+    "observation_id",
+    "experiment_id",
+    "stage",
+    "timestamp",
+    "source",
+    "behavioral",
+    "engine_state",
+    "model_io",
+    "self_report",
+    "internal_activation",
+    "provenance"
+  ],
+  "properties": {
+    "observation_id": { "type": "string", "format": "uuid" },
+    "trial_id": { "type": ["string", "null"] },
+    "experiment_id": { "type": "string" },
+    "stage": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "source": { "type": "string" },
+    "previous_observation_id": { "type": ["string", "null"] },
+    "behavioral": { "type": "object" },
+    "engine_state": { "type": "object" },
+    "model_io": { "type": "object" },
+    "self_report": { "type": "object" },
+    "internal_activation": { "type": "object" },
+    "errors": { "type": "array", "items": { "type": "string" } },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "provenance": {
+      "type": "object",
+      "required": ["schema_version"],
+      "properties": {
+        "schema_version": { "type": "string" },
+        "tool_name": { "type": ["string", "null"] },
+        "session_id": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

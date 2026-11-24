@@ -1,0 +1,51 @@
+# Python environments and generated files
+venv/
+.venv/
+_deps/
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+tmp_pytest/
+
+# Local configuration and machine-specific files
+lmstudio-mcp-entry.json
+.env
+.env.*
+!.env.example
+
+# Local models, third-party runtime and generated audio
+Qwen3-TTS/
+tools/qwentts/
+models/*.gguf
+*.wav
+*.mp3
+*.flac
+tmp_stt/
+
+# Experimental data and runtime logs
+data/experiments/*.jsonl
+data/snapshots/*.json
+research/raw/
+research/benchmarks/*.jsonl
+research/analyzed/
+research/reports/
+research/audio_artifacts/
+research/stimuli/_artifacts/
+
+# Private intellectual property documents
+docs/ip/
+
+# Local diagnostic output
+test_output.txt
+pip_install.log
+where_python.txt
+py_check.txt
+
+# Preserve empty directory placeholders
+!data/experiments/.gitkeep
+!data/snapshots/.gitkeep
+!research/raw/.gitkeep
+!research/analyzed/.gitkeep
+!research/reports/.gitkeep

@@ -1,0 +1,6 @@
+# Optional STT extras for AI Eco Lab (local microphone + faster-whisper)
+# Install: pip install -r requirements-stt.txt
+# Or:      pip install -e ".[stt]"
+faster-whisper>=1.0
+sounddevice>=0.4.6
+numpy>=1.24

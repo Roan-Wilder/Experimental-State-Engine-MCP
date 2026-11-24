@@ -1,0 +1,84 @@
+protocol_version: "1.0"
+experiment_name: prediction_revision_v1
+research_question: >
+  Can externally represented computational state transitions be measured
+  consistently during controlled AI prediction, contradiction, information
+  update, and resolution events?
+hypothesis: >
+  Contradiction trials will show measurable increases in conflict and
+  uncertainty relative to neutral trials (Hypothesized — not pre-validated).
+model_identifier: gemma4-v2-Q4_K_M
+conditions:
+  NEUTRAL:
+    information_event: neutral_information
+  CONTRADICTION:
+    information_event: contradictory_information
+  RESOLUTION:
+    information_event: contradictory_information
+    resolution_event: resolution
+randomization:
+  method: seeded_shuffle
+  locations:
+    - A
+    - B
+    - C
+  objects:
+    - key
+    - ball
+    - coin
+    - token
+  seed_policy: record_per_trial
+event_vocabulary:
+  - user_message
+  - model_response
+  - tool_call
+  - tool_result
+  - memory_retrieval
+  - novel_information
+  - contradiction
+  - successful_completion
+  - failed_completion
+  - prolonged_interaction
+  - interruption
+  - explicit_reflection
+  - neutral_information
+  - positive_feedback
+  - positive_social_feedback
+  - negative_feedback
+  - contradictory_information
+  - resolution
+  - uncertainty_stimulus
+  - social_affiliation
+  - social_rejection
+  - threat_information
+  - threatening_information
+state_dimensions:
+  core:
+    - activation
+    - stability
+    - novelty
+    - uncertainty
+    - attention
+    - persistence
+    - coherence
+    - exploration
+    - engagement
+    - conflict
+    - prediction_pressure
+    - internal_activity
+  affective:
+    - love
+    - affection
+    - joy
+    - trust
+    - curiosity
+    - surprise
+    - fear
+    - anger
+    - frustration
+    - sadness
+    - disgust
+    - anxiety
+stopping_criteria:
+  max_trials_per_condition: 10
+output_schema: research/schemas/trial_record_v1.json

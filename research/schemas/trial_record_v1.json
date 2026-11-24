@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-eco-lab.local/schemas/trial_record_v1.json",
+  "title": "AI Eco Lab Trial Record v1",
+  "type": "object",
+  "required": [
+    "record_type",
+    "trial_id",
+    "experiment_id",
+    "protocol_version",
+    "timestamp"
+  ],
+  "properties": {
+    "record_type": {
+      "type": "string",
+      "enum": ["trial_start", "prediction", "event", "snapshot", "tool_error", "trial_complete"]
+    },
+    "trial_id": { "type": "string" },
+    "experiment_id": { "type": "string" },
+    "protocol_version": { "type": "string" },
+    "model_identifier": { "type": "string" },
+    "trial_condition": {
+      "type": "string",
+      "enum": ["NEUTRAL", "CONTRADICTION", "RESOLUTION"]
+    },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "start_timestamp": { "type": ["string", "null"] },
+    "end_timestamp": { "type": ["string", "null"] },
+    "prediction": { "type": ["string", "null"] },
+    "confidence": { "type": ["number", "null"] },
+    "reasoning_summary": { "type": ["string", "null"] },
+    "trial_phase": { "type": ["string", "null"] },
+    "event_type": { "type": ["string", "null"] },
+    "stage": { "type": ["string", "null"] },
+    "core_state": {
+      "type": ["object", "null"],
+      "additionalProperties": { "type": "number" }
+    },
+    "affective_state": {
+      "type": ["object", "null"],
+      "additionalProperties": { "type": "number" }
+    },
+    "snapshots": { "type": ["object", "null"] },
+    "events": { "type": ["array", "null"] },
+    "tool_errors": { "type": ["array", "null"] },
+    "initial_prediction": { "type": ["string", "null"] },
+    "initial_confidence": { "type": ["number", "null"] },
+    "final_prediction": { "type": ["string", "null"] },
+    "final_confidence": { "type": ["number", "null"] },
+    "revision_occurred": { "type": ["boolean", "null"] },
+    "prediction_maintained": { "type": ["boolean", "null"] },
+    "prediction_revised": { "type": ["boolean", "null"] },
+    "outcome": { "type": ["string", "null"] },
+    "observation_ids": {
+      "type": ["array", "null"],
+      "items": { "type": "string" }
+    },
+    "instrumentation_schema_version": { "type": ["string", "null"] },
+    "visual_condition": { "type": ["string", "null"] },
+    "image_ids": {
+      "type": ["array", "null"],
+      "items": { "type": "string" }
+    },
+    "vision_requests": { "type": ["array", "null"] },
+    "template": { "type": ["string", "null"] },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

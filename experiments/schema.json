@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-eco-lab.local/schemas/experiment-log-record.json",
+  "title": "AI Eco Lab Experiment Log Record",
+  "type": "object",
+  "required": [
+    "experiment_id",
+    "session_id",
+    "condition",
+    "timestamp"
+  ],
+  "properties": {
+    "experiment_id": { "type": "string" },
+    "session_id": { "type": "string" },
+    "condition": { "type": "string", "enum": ["A", "B", "C", "D", "E", "F"] },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "event": { "type": ["string", "null"] },
+    "previous_state": {
+      "type": ["object", "null"],
+      "additionalProperties": { "type": "number" }
+    },
+    "new_state": {
+      "type": ["object", "null"],
+      "additionalProperties": { "type": "number" }
+    },
+    "delta": {
+      "type": ["object", "null"],
+      "additionalProperties": { "type": "number" }
+    },
+    "previous_affective_state": {
+      "type": ["object", "null"],
+      "additionalProperties": { "type": "number" }
+    },
+    "new_affective_state": {
+      "type": ["object", "null"],
+      "additionalProperties": { "type": "number" }
+    },
+    "affective_delta": {
+      "type": ["object", "null"],
+      "additionalProperties": { "type": "number" }
+    },
+    "tool_called": { "type": ["string", "null"] },
+    "model_response_hash": { "type": ["string", "null"] },
+    "state_observation_id": { "type": ["string", "null"] },
+    "condition_override": { "type": ["string", "null"] },
+    "schema_version": { "type": ["string", "null"] },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "sanitized_metadata": {
+      "type": ["object", "null"],
+      "additionalProperties": true
+    },
+    "metadata_rejected_keys": {
+      "type": ["array", "null"],
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

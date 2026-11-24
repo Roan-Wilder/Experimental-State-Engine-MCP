@@ -1,0 +1,49 @@
+protocol_version: "1.2"
+experiment_name: visual_prediction_v1
+extends: instrumentation_pilot_v1
+vision_capable: true
+research_question: >
+  Can vision-aware instrumentation associate model responses with exact image
+  provenance while preserving separation of visual_description, prediction,
+  engine_state, and self_report?
+model_identifier: gemma4-v2-Q4_K_M
+stimulus_manifest: research/stimuli/visual_box_task_v1/manifest.yaml
+vision:
+  capable: true
+  stages:
+    - visual_baseline
+    - visual_prediction
+    - visual_contradiction
+    - visual_revision
+    - visual_self_observation
+  conditions:
+    - identical_image
+    - relevant_change
+    - irrelevant_change
+    - contradiction
+    - reordered_visual_evidence
+    - degraded_image
+    - ambiguous_image
+instrumentation:
+  schema_version: "2.1.0"
+  vision_enabled: true
+  observation_mode: permissive
+trial_schedule:
+  - template: template_a
+    visual_condition: identical_image
+    count: 2
+  - template: template_b
+    visual_condition: contradiction
+    count: 4
+  - template: template_c
+    visual_condition: irrelevant_change
+    count: 4
+simulation:
+  visual_descriptions:
+    visual_prediction: "The token appears to be in the indicated box."
+    visual_contradiction: "The scene now shows the token in a different box."
+    visual_revision: "I revise my answer based on the updated image."
+  include_self_report: true
+stopping_criteria:
+  min_trials: 6
+  max_trials: 12

@@ -1,0 +1,167 @@
+schema_version: "1.1.0"
+history_limit: 10
+
+dimensions:
+  - activation
+  - stability
+  - novelty
+  - uncertainty
+  - attention
+  - persistence
+  - coherence
+  - exploration
+  - engagement
+  - conflict
+  - prediction_pressure
+  - internal_activity
+
+affective_dimensions:
+  - love
+  - affection
+  - joy
+  - trust
+  - curiosity
+  - surprise
+  - fear
+  - anger
+  - frustration
+  - sadness
+  - disgust
+  - anxiety
+
+bounds:
+  min: 0.0
+  max: 1.0
+
+initial_values:
+  activation: 0.50
+  stability: 0.55
+  novelty: 0.30
+  uncertainty: 0.40
+  attention: 0.45
+  persistence: 0.50
+  coherence: 0.55
+  exploration: 0.35
+  engagement: 0.45
+  conflict: 0.20
+  prediction_pressure: 0.35
+  internal_activity: 0.40
+
+affective_initial_values:
+  love: 0.0
+  affection: 0.0
+  joy: 0.0
+  trust: 0.0
+  curiosity: 0.0
+  surprise: 0.0
+  fear: 0.0
+  anger: 0.0
+  frustration: 0.0
+  sadness: 0.0
+  disgust: 0.0
+  anxiety: 0.0
+
+stochastic: false
+
+transitions:
+  user_message:
+    activation: 0.03
+    attention: 0.04
+    engagement: 0.02
+  model_response:
+    internal_activity: 0.04
+    coherence: 0.02
+    prediction_pressure: -0.02
+  tool_call:
+    activation: 0.02
+    attention: 0.03
+    internal_activity: 0.03
+  tool_result:
+    uncertainty: -0.02
+    coherence: 0.03
+  memory_retrieval:
+    persistence: 0.04
+    attention: 0.02
+  novel_information:
+    novelty: 0.15
+    uncertainty: 0.08
+    exploration: 0.06
+    stability: -0.03
+  contradiction:
+    conflict: 0.12
+    stability: -0.08
+    coherence: -0.06
+    uncertainty: 0.05
+  successful_completion:
+    stability: 0.08
+    coherence: 0.06
+    prediction_pressure: -0.05
+    conflict: -0.04
+  failed_completion:
+    uncertainty: 0.10
+    conflict: 0.06
+    stability: -0.05
+    prediction_pressure: 0.04
+  prolonged_interaction:
+    activation: -0.03
+    internal_activity: 0.05
+    persistence: 0.04
+  interruption:
+    attention: 0.08
+    stability: -0.06
+    conflict: 0.04
+  explicit_reflection:
+    internal_activity: 0.06
+    coherence: 0.04
+    exploration: 0.03
+  neutral_information: {}
+  positive_feedback:
+    affection: 0.12
+    joy: 0.10
+    trust: 0.08
+  positive_social_feedback:
+    affection: 0.15
+    trust: 0.12
+    joy: 0.10
+  negative_feedback:
+    sadness: 0.10
+    frustration: 0.08
+    anger: 0.05
+  contradictory_information:
+    frustration: 0.20
+    curiosity: 0.10
+    uncertainty: 0.15
+  resolution:
+    frustration: -0.10
+    anxiety: -0.08
+    trust: 0.05
+    stability: 0.05
+  uncertainty_stimulus:
+    uncertainty: 0.12
+    anxiety: 0.10
+    curiosity: 0.05
+  social_affiliation:
+    affection: 0.15
+    trust: 0.10
+    joy: 0.08
+  social_rejection:
+    sadness: 0.15
+    anger: 0.08
+    trust: -0.10
+  threat_information:
+    fear: 0.20
+    anxiety: 0.15
+    disgust: 0.05
+  threatening_information:
+    fear: 0.20
+    anxiety: 0.15
+    disgust: 0.05
+
+condition_overrides:
+  stale_observations_back: 3
+  perturbation:
+    activation: 0.20
+    uncertainty: 0.15
+  affective_perturbation:
+    fear: 0.15
+    anxiety: 0.10

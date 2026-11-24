@@ -1,0 +1,25 @@
+[project]
+name = "ai-eco-lab"
+version = "0.1.0"
+description = "Experimental internal-state MCP server for LM Studio consciousness research"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.28,<2",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+stt = [
+    "faster-whisper>=1.0",
+    "sounddevice>=0.4.6",
+    "numpy>=1.24",
+]
+dev = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = [
+    "integration: optional hardware or external binary integration tests",
+]

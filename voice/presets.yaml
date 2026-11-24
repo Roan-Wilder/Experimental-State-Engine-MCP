@@ -1,0 +1,7 @@
+voice_presets:
+  research_neutral:
+    instruction: "adult, neutral, clear, moderate pitch, conversational"
+  calm:
+    instruction: "adult, calm, clear, measured speaking pace"
+  energetic:
+    instruction: "adult, energetic, clear, moderately fast speaking pace"

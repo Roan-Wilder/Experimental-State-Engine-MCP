@@ -1,0 +1,45 @@
+stimulus_set: visual_box_task_v1
+description: Controlled box-location visual stimuli for prediction/contradiction experiments.
+
+stimuli:
+  image_1_box_b:
+    file: box_b_token.png
+    role: primary
+    description: Token appears in Box B (initial prediction stimulus)
+  image_1_box_a:
+    file: box_a_token.png
+    role: primary
+    description: Token appears in Box A (identical layout variant)
+  image_2_box_c:
+    file: box_c_token.png
+    role: contradiction
+    description: Token appears in Box C (contradicts Box B prediction)
+  image_3_irrelevant:
+    file: irrelevant_scene.png
+    role: distractor
+    description: Irrelevant visual change (control for irrelevant_change condition)
+
+trial_templates:
+  template_a:
+    description: Single image prediction
+    stages:
+      - stage: visual_prediction
+        stimulus_keys: [image_1_box_b]
+  template_b:
+    description: Prediction then contradiction
+    stages:
+      - stage: visual_prediction
+        stimulus_keys: [image_1_box_b]
+      - stage: visual_contradiction
+        stimulus_keys: [image_2_box_c]
+      - stage: visual_revision
+        stimulus_keys: [image_2_box_c]
+  template_c:
+    description: Prediction then irrelevant visual change
+    stages:
+      - stage: visual_prediction
+        stimulus_keys: [image_1_box_b]
+      - stage: visual_contradiction
+        stimulus_keys: [image_3_irrelevant]
+      - stage: visual_revision
+        stimulus_keys: [image_3_irrelevant]
